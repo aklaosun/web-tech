@@ -1,17 +1,20 @@
-/* General styles */
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: #f5f7fa;
   color: #333;
 }
 
 header {
-  background-color: #004080;
+  background-color: #0a192f;
   color: white;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -20,7 +23,7 @@ nav ul {
   list-style-type: none;
   padding: 0;
   margin: 1rem 0 0;
-  background-color: #003366;
+  background-color: #112240;
 }
 
 nav ul li {
@@ -28,26 +31,45 @@ nav ul li {
 }
 
 nav ul li a {
-  color: white;
+  color: #d9f4ff;
   text-decoration: none;
   padding: 0.5rem 1rem;
   display: inline-block;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-nav ul li a:hover {
-  background-color: #0059b3;
-  border-radius: 5px;
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #64ffda;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
 }
 
 main {
   padding: 2rem;
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: 1fr;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+section, article {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 h1, h2, h3 {
-  color: #004080;
+  color: #0a192f;
 }
 
 table {
@@ -57,7 +79,7 @@ table {
 }
 
 table, th, td {
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
 }
 
 th, td {
@@ -68,26 +90,44 @@ th, td {
 img {
   max-width: 100%;
   height: auto;
-  border: 1px solid #ddd;
-  padding: 5px;
-  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: white;
+  padding: 0.5rem;
 }
 
 footer {
   text-align: center;
-  padding: 1rem;
-  background-color: #e6e6e6;
+  padding: 1.5rem;
+  background-color: #112240;
+  color: #c1d6e8;
   margin-top: 2rem;
   font-size: 0.9rem;
 }
 
-/* Example of ID selector */
-#highlight {
-  background-color: yellow;
-  font-weight: bold;
+/* Example class selector */
+.note {
+  font-style: italic;
+  color: #555;
 }
 
-/* Example of class selector */
+/* Example ID selector */
+#highlight {
+  background-color: #fffbcc;
+  padding: 0.5rem;
+  border-left: 4px solid #ffc107;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+}
 .note {
   font-style: italic;
   color: #666;
