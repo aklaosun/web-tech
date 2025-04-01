@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Me!</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .quiz-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
 
+    .quiz-container h2 {
+      margin-top: 0;
+    }
+
+    .quiz-container label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-container input[type="text"] {
+      padding: 0.5rem;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .result {
+      margin-top: 2rem;
+      background-color: #f0f8ff;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Quiz Me!</h1>
+    <h2 style="font-weight: normal; font-size: 1.2rem;">IT 3203 Section W02 Spring 2025<br>Kennesaw State University</h2>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="topic1.html">Web Analytics</a></li>
+        <li><a href="topic2.html">Web Metrics</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="quiz.html">Quiz Me!</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="quiz-container">
+    <form id="quizForm">
+      <h2>1. What does web analytics primarily help with?</h2>
+      <label><input type="radio" name="q1" value="a"> Storing cookies</label>
+      <label><input type="radio" name="q1" value="b"> Visual design</label>
+      <label><input type="radio" name="q1" value="c"> Tracking and analyzing website data</label>
+
+      <h2>2. Which is NOT a typical web metric?</h2>
+      <label><input type="radio" name="q2" value="a"> Bounce rate</label>
+      <label><input type="radio" name="q2" value="b"> Conversion rate</label>
+      <label><input type="radio" name="q2" value="c"> Font size</label>
+
+      <h2>3. What platform is commonly used for web analytics?</h2>
+      <label><input type="radio" name="q3" value="a"> Photoshop</label>
+      <label><input type="radio" name="q3" value="b"> Google Analytics</label>
+      <label><input type="radio" name="q3" value="c"> Canva</label>
+
+      <h2>4. Type a term used for tracking user activity:</h2>
+      <input type="text" name="q4" placeholder="Your answer here">
+
+      <h2>5. Select all that are common web metrics:</h2>
+      <label><input type="checkbox" name="q5" value="a"> Bounce rate</label>
+      <label><input type="checkbox" name="q5" value="b"> Color palette</label>
+      <label><input type="checkbox" name="q5" value="c"> Session duration</label>
+
+      <button type="button" onclick="gradeQuiz()">Submit Quiz</button>
+      <button type="button" onclick="document.getElementById('quizForm').reset(); document.getElementById('result').innerHTML = '';">Restart Quiz</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Ayomide Laosun</p>
+  </footer>
+
+  <script>
+    function gradeQuiz() {
+      const form = document.forms["quizForm"];
+      let score = 0;
+      let result = '';
+
+      // Q1
+      if (form.q1.value === "c") {
+        score++;
+        result += "<p>Q1: Correct</p>";
+      } else {
+        result += "<p>Q1: Incorrect (Correct: Tracking and analyzing website data)</p>";
+      }
+
+      // Q2
+      if (form.q2.value === "c") {
+        score++;
+        result += "<p>Q2: Correct</p>";
+      } else {
+        result += "<p>Q2: Incorrect (Correct: Font size)</p>";
+      }
+
+      // Q3
+      if (form.q3.value === "b") {
+        score++;
+        result += "<p>Q3: Correct</p>";
+      } else {
+        result += "<p>Q3: Incorrect (Correct: Google Analytics)</p>";
+      }
+
+      // Q4
+      const answer4 = form.q4.value.trim().toLowerCase();
+      if (answer4.includes("cookie") || answer4.includes("session")) {
+        score++;
+        result += "<p>Q4: Correct</p>";
+      } else {
+        result += "<p>Q4: Incorrect (Example: 'cookies' or 'session')</p>";
+      }
+
+      // Q5 (multi-select)
+      const q5 = form.querySelectorAll('input[name="q5"]:checked');
+      const selected = Array.from(q5).map(i => i.value);
+      const correct = ["a", "c"];
+      if (selected.includes("a") && selected.includes("c") && !selected.includes("b")) {
+        score++;
+        result += "<p>Q5: Correct</p>";
+      } else {
+        result += "<p>Q5: Incorrect (Correct: Bounce rate, Session duration)</p>";
+      }
+
+      // Final score
+      const total = 5;
+      result = `<h3>Your Score: ${score}/${total}</h3>` + result;
+      result += `<h3>${score >= 3 ? "✅ Pass" : "❌ Fail"}</h3>`;
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>
