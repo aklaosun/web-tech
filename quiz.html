@@ -5,52 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Me!</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .quiz-container {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 800px;
-      margin: auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .quiz-container h2 {
-      margin-top: 0;
-    }
-
-    .quiz-container label {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .quiz-container input[type="text"] {
-      padding: 0.5rem;
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-
-    .result {
-      margin-top: 2rem;
-      background-color: #f0f8ff;
-      padding: 1rem;
-      border-radius: 6px;
-    }
-
-    button {
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #007acc;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #005fa3;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -69,28 +23,38 @@
 
   <main class="quiz-container">
     <form id="quizForm">
-      <h2>1. What does web analytics primarily help with?</h2>
-      <label><input type="radio" name="q1" value="a"> Storing cookies</label>
-      <label><input type="radio" name="q1" value="b"> Visual design</label>
-      <label><input type="radio" name="q1" value="c"> Tracking and analyzing website data</label>
+      <div>
+        <h2>1. What does web analytics primarily help with?</h2>
+        <label><input type="radio" name="q1" value="a"> Storing cookies</label>
+        <label><input type="radio" name="q1" value="b"> Visual design</label>
+        <label><input type="radio" name="q1" value="c"> Tracking and analyzing website data</label>
+      </div>
 
-      <h2>2. Which is NOT a typical web metric?</h2>
-      <label><input type="radio" name="q2" value="a"> Bounce rate</label>
-      <label><input type="radio" name="q2" value="b"> Conversion rate</label>
-      <label><input type="radio" name="q2" value="c"> Font size</label>
+      <div>
+        <h2>2. Which is NOT a typical web metric?</h2>
+        <label><input type="radio" name="q2" value="a"> Bounce rate</label>
+        <label><input type="radio" name="q2" value="b"> Conversion rate</label>
+        <label><input type="radio" name="q2" value="c"> Font size</label>
+      </div>
 
-      <h2>3. What platform is commonly used for web analytics?</h2>
-      <label><input type="radio" name="q3" value="a"> Photoshop</label>
-      <label><input type="radio" name="q3" value="b"> Google Analytics</label>
-      <label><input type="radio" name="q3" value="c"> Canva</label>
+      <div>
+        <h2>3. What platform is commonly used for web analytics?</h2>
+        <label><input type="radio" name="q3" value="a"> Photoshop</label>
+        <label><input type="radio" name="q3" value="b"> Google Analytics</label>
+        <label><input type="radio" name="q3" value="c"> Canva</label>
+      </div>
 
-      <h2>4. Type a term used for tracking user activity:</h2>
-      <input type="text" name="q4" placeholder="Your answer here">
+      <div>
+        <h2>4. Type a term used for tracking user activity:</h2>
+        <input type="text" name="q4" placeholder="Your answer here">
+      </div>
 
-      <h2>5. Select all that are common web metrics:</h2>
-      <label><input type="checkbox" name="q5" value="a"> Bounce rate</label>
-      <label><input type="checkbox" name="q5" value="b"> Color palette</label>
-      <label><input type="checkbox" name="q5" value="c"> Session duration</label>
+      <div>
+        <h2>5. Select all that are common web metrics:</h2>
+        <label><input type="checkbox" name="q5" value="a"> Bounce rate</label>
+        <label><input type="checkbox" name="q5" value="b"> Color palette</label>
+        <label><input type="checkbox" name="q5" value="c"> Session duration</label>
+      </div>
 
       <button type="button" onclick="gradeQuiz()">Submit Quiz</button>
       <button type="button" onclick="document.getElementById('quizForm').reset(); document.getElementById('result').innerHTML = '';">Restart Quiz</button>
@@ -142,7 +106,7 @@
         result += "<p>Q4: Incorrect (Example: 'cookies' or 'session')</p>";
       }
 
-      // Q5 (multi-select)
+      // Q5
       const q5 = form.querySelectorAll('input[name="q5"]:checked');
       const selected = Array.from(q5).map(i => i.value);
       const correct = ["a", "c"];
@@ -159,24 +123,6 @@
       result += `<h3>${score >= 3 ? "✅ Pass" : "❌ Fail"}</h3>`;
 
       document.getElementById("result").innerHTML = result;
-
-      <form id="quizForm">
-  <div>
-    <h2>1. What does web analytics primarily help with?</h2>
-    <label><input type="radio" name="q1" value="a"> Storing cookies</label>
-    <label><input type="radio" name="q1" value="b"> Visual design</label>
-    <label><input type="radio" name="q1" value="c"> Tracking and analyzing website data</label>
-  </div>
-
-  <div>
-    <h2>2. Which is NOT a typical web metric?</h2>
-    <label><input type="radio" name="q2" value="a"> Bounce rate</label>
-    <label><input type="radio" name="q2" value="b"> Conversion rate</label>
-    <label><input type="radio" name="q2" value="c"> Font size</label>
-  </div>
-
-  <!-- Repeat for other questions -->
-</form>
     }
   </script>
 </body>
