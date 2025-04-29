@@ -159,6 +159,24 @@
       result += `<h3>${score >= 3 ? "✅ Pass" : "❌ Fail"}</h3>`;
 
       document.getElementById("result").innerHTML = result;
+
+      <form id="quizForm">
+  <div>
+    <h2>1. What does web analytics primarily help with?</h2>
+    <label><input type="radio" name="q1" value="a"> Storing cookies</label>
+    <label><input type="radio" name="q1" value="b"> Visual design</label>
+    <label><input type="radio" name="q1" value="c"> Tracking and analyzing website data</label>
+  </div>
+
+  <div>
+    <h2>2. Which is NOT a typical web metric?</h2>
+    <label><input type="radio" name="q2" value="a"> Bounce rate</label>
+    <label><input type="radio" name="q2" value="b"> Conversion rate</label>
+    <label><input type="radio" name="q2" value="c"> Font size</label>
+  </div>
+
+  <!-- Repeat for other questions -->
+</form>
     }
   </script>
 </body>
